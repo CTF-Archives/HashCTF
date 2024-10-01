@@ -14,7 +14,7 @@ if __name__ == "__main__":
     with open("./users.json", "r") as f:
         users_data: dict = json.load(f)
 
-    username_md5 = md5(bytes(username)).hexdigest()
+    username_md5 = md5(username.encode()).hexdigest()
     if username_md5 in users_data.keys():
         sys.exit(2)
     else:
