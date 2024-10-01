@@ -1,6 +1,5 @@
 import sys
 import json
-import uuid
 from hashlib import md5
 from urllib.parse import quote
 
