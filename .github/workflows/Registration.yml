@@ -1,0 +1,44 @@
+name: User Registration / 用户注册
+
+run-name: ${{github.actor}} is registering a user 🚀
+
+on:
+  workflow_dispatch:
+    inputs:
+      username:
+        description: "Username / 用户名"
+        required: true
+        default: "warning"
+        type: string
+      email:
+        description: "E-mail Address / 邮箱地址"
+        required: true
+        type: string
+      biography:
+        description: "User's biography / 个人简介"
+        required: true
+        type: string
+
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - name: Setup Python 3.12 Environment
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run Registration Script
+        id: registration
+        run: |
+          output=$(python Registration.py ${{ github.actor }} ${{ inputs.username }} ${{ inputs.email }} ${{ inputs.biography }})
+          echo "Output: $output"
+          echo "::set-output name=result::$output"
+          exit_code=$?
+          echo "Exit code: $exit_code"
+          echo "::set-output name=exit_code::$exit_code"
+      - name: Check Registration Status
+        run: |
+          echo "The script exit code was: ${{ steps.registration.outputs.exit_code }}"
+          echo "The script output was: ${{ steps.registration.outputs.result }}"
