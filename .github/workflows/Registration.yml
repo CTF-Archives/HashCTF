@@ -8,7 +8,6 @@ on:
       username:
         description: "Username / 用户名"
         required: true
-        default: "warning"
         type: string
       email:
         description: "E-mail Address / 邮箱地址"
