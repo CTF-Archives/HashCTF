@@ -31,7 +31,7 @@ jobs:
       - name: Run Registration Script
         id: registration
         run: |
-          output=$(python Registration.py ${{ github.actor}} ${{ inputs.username }} ${{ inputs.email }} ${{ inputs.biography }})
+          output=$(python Registration.py ā ${{ github.actor}} ā ${{ inputs.username }} ā ${{ inputs.email }} ā ${{ inputs.biography }})
           echo "Output: $output"
           echo "::set-output name=result::$output"
           exit_code=$?
