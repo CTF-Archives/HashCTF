@@ -5,9 +5,11 @@ from urllib.parse import quote
 
 
 if __name__ == "__main__":
-    # python Registration.py actor username email biography
-    print([i.strip() for i in " ".join(sys.argv[1:]).split("ā")[1:]])
-    actor, username, email, biography = [i.strip() for i in " ".join(sys.argv[1:]).split("ā") if i != ""]
+    # python Registration.py ā actor ā username ā email ā biography
+    user_input = [i.strip() for i in " ".join(sys.argv[1:]).split("ā")[1:]]
+    if len(user_input) != 4:
+        sys.exit(1)
+    actor, username, email, biography = user_input
     print(actor, username, email, biography)
 
     with open("./users.json", "r") as f:
