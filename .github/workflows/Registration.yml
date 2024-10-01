@@ -41,3 +41,12 @@ jobs:
         run: |
           echo "The script exit code was: ${{steps.registration.outputs.exit_code}}"
           echo "The script output was: ${{steps.registration.outputs.result}}"
+      - name: Commit changes
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add .
+          git commit -m "Update files from GitHub Actions" || echo "No changes to commit"
+      - name: Push changes
+        run: |
+          git push origin HEAD:main
