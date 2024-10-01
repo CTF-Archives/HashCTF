@@ -2,6 +2,7 @@ import sys
 import json
 import uuid
 from hashlib import md5
+from urllib.parse import quote
 
 
 if __name__ == "__main__":
@@ -21,7 +22,7 @@ if __name__ == "__main__":
         users_data["Users"][username_md5] = {
             "Github-Actor": actor,
             "Username": username,
-            "Email-Address": email,
+            "Email-Address": quote(email),
             "User-Biography": biography,
         }
 
