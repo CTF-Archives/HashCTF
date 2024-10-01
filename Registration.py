@@ -6,7 +6,7 @@ from urllib.parse import quote
 
 if __name__ == "__main__":
     # python Registration.py actor username email biography
-    print([i.strip() for i in " ".join(sys.argv[1:]).split("ā") if i != ""])
+    print([i.strip() for i in " ".join(sys.argv[1:]).split("ā")[1:]])
     actor, username, email, biography = [i.strip() for i in " ".join(sys.argv[1:]).split("ā") if i != ""]
     print(actor, username, email, biography)
 
